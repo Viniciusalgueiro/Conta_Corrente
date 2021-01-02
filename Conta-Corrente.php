@@ -1,26 +1,5 @@
 <?php
-
-function exibeMensagem(string $mensagem){
-    echo $mensagem .PHP_EOL;
-}
-
-function depositar(array $conta, float $valorADepositar): array {
-    if ($valorADepositar > 0) {
-        $conta['Saldo'] += $valorADepositar;
-    } else {
-        exibeMensagem("Depositos precisam ser positivos");
-    }
-    return $conta;
-}
-
-function sacar(array $conta, float $valorASacar): array {
-    if($valorASacar > $conta['Saldo']) {
-        exibeMensagem ( "Você não tem saldo suficiente");
-    } else {
-        $conta['Saldo'] -=$valorASacar;
-    }
-    return $conta;
-}
+require 'funcoes.php';
 
 $contascorrentes = [
     '123.456-78' => ['Titular' => 'vinicius',
@@ -46,6 +25,11 @@ $contascorrentes['876.543-21']  = sacar(
     300
 );
 
+unset ($contascorrentes ['132.435-678']);
+
+
+echo "<ul>";
 foreach ($contascorrentes as $cpf => $conta){
-    exibeMensagem($cpf ." " . $conta['Titular'] . ' '  .$conta['Saldo']);
+    exibeConta($conta);       
 }
+echo "</ul>";
