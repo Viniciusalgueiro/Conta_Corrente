@@ -25,11 +25,32 @@ $contascorrentes['876.543-21']  = sacar(
     300
 );
 
-unset ($contascorrentes ['132.435-678']);
 
 
-echo "<ul>";
-foreach ($contascorrentes as $cpf => $conta){
-    exibeConta($conta);       
-}
-echo "</ul>";
+
+?>
+
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Conta Corrente</h1>
+
+    <dl>
+        <?php foreach($contascorrentes as $cpf => $conta) { ?>
+        <dt>
+            <h3> <?= $conta['Titular']; ?> - <?= $cpf; ?> </h3></dt>
+        <dd>
+            Saldo : <?= $conta['Saldo']; ?> 
+        </dd>
+        <?php } ?>
+    </dl>
+
+</body>
+</html>
